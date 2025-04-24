@@ -1,6 +1,7 @@
 package com.bot.telegrambot.service;
 
 import com.bot.telegrambot.dto.WeatherResponse;
+import jakarta.annotation.PostConstruct;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,14 @@ public class WeatherService {
 
     @Value("${weather.base.hourly-url}")
     private String BASE_HOURLY_URL;
+
+    @PostConstruct
+    public void init() {
+        System.out.println("API_KEY = " + API_KEY);
+        System.out.println("BASE_DAILY_URL = " + BASE_DAILY_URL);
+        System.out.println("BASE_HOURLY_URL = " + BASE_HOURLY_URL);
+    }
+
 
     private final RestTemplate restTemplate = new RestTemplate();
 
